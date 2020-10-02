@@ -21,7 +21,7 @@ int main() {
 
   v = {"emma", "dora", "ruth", "ziegellaub", "eichler"};
   std::cout << "Case 1: ";
-  MergeSort(v);
+  BubbleSort(v);
   print(v);
   std::cout << "Expected: [dora, eichler, emma, ruth, ziegellaub]" << std::endl;
 }
