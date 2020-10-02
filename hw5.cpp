@@ -3,9 +3,11 @@
 */
 #include <vector>
 #include <string>
+#include <assert.h>
 #include "hw5.h"
 
 void BubbleSort(std::vector<std::string> &vec) {
+  assert(vec.size() > 1);
   std::string temp;
   bool swapped;
 
