@@ -7,7 +7,9 @@
 #include "hw5.h"
 
 void BubbleSort(std::vector<std::string> &vec) {
-  assert(vec.size() > 1);
+  if(vec.size() < 2) {
+    return;
+  }
   std::string temp;
   bool swapped;
 
