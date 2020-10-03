@@ -7,9 +7,6 @@
 #include "hw5.h"
 
 void BubbleSort(std::vector<std::string> &vec) {
-  if(vec.size() < 2) {
-    return;
-  }
   std::string temp;
   bool swapped;
 

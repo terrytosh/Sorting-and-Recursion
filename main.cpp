@@ -19,7 +19,7 @@ void print(std::vector<std::string> &v) {
 int main() {
   std::vector<std::string> v;
 
-  v = {"emma", "dora", "ruth", "ziegellaub", "eichler"};
+  v = {"zielg", "emma", "zielg"};
   std::cout << "Case 1: ";
   BubbleSort(v);
   print(v);
