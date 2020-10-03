@@ -3,7 +3,7 @@
 */
 #include <vector>
 #include <string>
-#include <assert.h>
+#include <cassert>
 #include "hw5.h"
 
 void BubbleSort(std::vector<std::string> &vec) {
