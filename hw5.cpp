@@ -39,7 +39,7 @@ void insertHelper(std::vector<int> &v, int index) {
   }
 
   insertHelper(v, index - 1);
-  int end = v[v.size() - 1];
+  int end = v[index - 1];
   int current_index = index - 2;
 
   while (current_index >= 0 && v[current_index] > end) { 
@@ -50,5 +50,5 @@ void insertHelper(std::vector<int> &v, int index) {
 }
 
 void InsertionSort(std::vector<int> &v) {
-  insertHelper(v, v.size() - 1);
+  insertHelper(v, v.size());
 }
