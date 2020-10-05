@@ -83,7 +83,7 @@ int main() {
   //MargeSort()
   //Test case 1
   std::vector<std::string> merge_1;
-  merge_1 = {"ruth", "dora", "ziegellaub", "zzz"};
+  merge_1 = {"ruth", "dora", "ziegellaub", "emma", "eichler"};
   std::cout << "Case 1: ";
   MergeSort(merge_1);
   print(merge_1);
