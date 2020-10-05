@@ -8,6 +8,11 @@ to store whether or not a pass contained a swap.
 Do while(swapped), set swapped to false, interate from 0 to size - 1. If the current element comes alphabetically after its
 proceeding element, swap them and set swapped = true. Keep doing this process for each element in the vector
 until no elements are swapped or until i reaches size - 1.
+
+InsertionSort():
+
+MergeSort():
+
 */
 #include <vector>
 #include <string>
@@ -51,4 +56,56 @@ void insertHelper(std::vector<int> &v, int index) {
 
 void InsertionSort(std::vector<int> &v) {
   insertHelper(v, v.size());
+}
+
+void merge(std::vector<std::string> &vec, int l, int mid, int r) {
+  int l_size = mid - l + 1;
+  std::string left_array[l_size];
+  for(int i = 0 ; i < l_size; i++){
+    left_array[i] = vec[l + i];
+  }
+
+  int r_size = r - mid;
+  std::string right_array[r_size] ;
+  for(int j = 0 ; j < r_size; j++) {
+    right_array[j] = vec[mid + 1 + r];
+  }
+
+  int li = 0;
+  int ri = 0;
+  int k = l;
+
+  while (li < l_size && ri < r_size) { 
+    if (left_array[li].compare(right_array[ri]) > 0) { 
+      vec[k] = left_array[li]; 
+      li++; 
+    } else { 
+      vec[k] = right_array[ri]; 
+      ri++; 
+    } 
+    k++; 
+  }
+  while (li < l_size) { 
+    vec[k] = left_array[li]; 
+    li++; 
+    k++; 
+  }
+  while (ri < r_size) { 
+    vec[k] = right_array[ri]; 
+    ri++; 
+    k++; 
+  } 
+}
+
+void mergeHelper(std::vector<std::string> &vec, int l, int r) {
+  if (l < r) {
+    int mid = l + (r - l) / 2;
+    mergeHelper(vec, l, mid);
+    mergeHelper(vec, mid + 1, r);
+    merge(vec, l, mid, r);
+  }
+}
+
+void MergeSort(std::vector<std::string> &vec) {
+  mergeHelper(vec, 0, vec.size() - 1);
 }
