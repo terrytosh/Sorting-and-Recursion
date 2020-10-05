@@ -59,43 +59,26 @@ void InsertionSort(std::vector<int> &v) {
 }
 
 void merge(std::vector<std::string> &vec, int l, int mid, int r) {
-  int l_size = mid - l + 1;
-  std::string left_array[l_size];
-  for(int i = 0 ; i < l_size; i++){
-    left_array[i] = vec[l + i];
-  }
-
-  int r_size = r - mid;
-  std::string right_array[r_size];
-  for(int j = 0; j < r_size; j++) {
-    right_array[j] = vec[mid + 1 + r];
-  }
-
-  int li = 0;
-  int ri = 0;
-  int k = l;
-
-  while (li < l_size && ri < r_size) { 
-    if (left_array[li].compare(right_array[ri]) > 0) { 
-      vec[k] = left_array[li]; 
-      li++;
-      k++; 
-    } else { 
-      vec[k] = right_array[ri]; 
-      ri++; 
-      k++;
-    }  
-  }
-  while (li < l_size) { 
-    vec[k] = left_array[li]; 
-    li++; 
-    k++; 
-  }
-  while (ri < r_size) { 
-    vec[k] = right_array[ri]; 
-    ri++; 
-    k++; 
-  } 
+  std::string *temp = new std::string[r - l +1 ];
+  int i = l, j = mid + 1; //i is for left-hand,j is for right-hand
+  int k = 0; //k is for the temporary array
+  while(i <= mid && j <= r){
+    if(vec[i].compare(vec[j]) > 0)
+        temp[k++] = vec[i++];
+    else
+        temp[k++] = vec[j++];
+    }
+    //rest elements of left-half
+    while(i <= mid)
+        temp[k++] = vec[i++];
+    //rest elements of right-half
+    while(j <= r)
+        temp[k++] = vec[j++];
+    //copy the mergered temporary array to the original array
+    for(k = 0, i = l; i <= r; ++i, ++k)
+        vec[i] = temp[k];
+ 
+    delete []temp; 
 }
 
 void mergeHelper(std::vector<std::string> &vec, int l, int r) {
