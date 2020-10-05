@@ -92,5 +92,8 @@ void mergeHelper(std::vector<std::string> &vec, int l, int r) {
 }
 
 void MergeSort(std::vector<std::string> &vec) {
+  if(vec.size() < 2) {
+    return;
+  }
   mergeHelper(vec, 0, vec.size() - 1);
 }
