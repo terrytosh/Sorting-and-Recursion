@@ -63,7 +63,7 @@ void merge(std::vector<std::string> &vec, int l, int mid, int r) {
   int i = l, j = mid + 1; //i is for left-hand,j is for right-hand
   int k = 0; //k is for the temporary array
   while(i <= mid && j <= r){
-    if(vec[i].compare(vec[j]) < 0)
+    if(vec[i].compare(vec[j]) <= 0)
         temp[k++] = vec[i++];
     else
         temp[k++] = vec[j++];
@@ -92,8 +92,5 @@ void mergeHelper(std::vector<std::string> &vec, int l, int r) {
 }
 
 void MergeSort(std::vector<std::string> &vec) {
-  if(vec.size() < 2) {
-    return;
-  }
   mergeHelper(vec, 0, vec.size() - 1);
 }

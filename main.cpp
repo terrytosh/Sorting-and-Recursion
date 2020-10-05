@@ -88,4 +88,11 @@ int main() {
   MergeSort(merge_1);
   print(merge_1);
   std::cout << "Expected: [dora, eichler, emma, ruth, ziegellaub]" << std::endl;
+
+  std::vector<std::string> merge_2;
+  merge_2 = {"rd", "rc", "rz", "ra", "re"};
+  std::cout << "Case 2: ";
+  MergeSort(merge_2);
+  print(merge_2);
+  std::cout << "Expected: [dora, eichler, emma, ruth, ziegellaub]" << std::endl;
 }
