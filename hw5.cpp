@@ -32,3 +32,23 @@ void BubbleSort(std::vector<std::string> &vec) {
     }
   } while (swapped);
 }
+
+void insertHelper(std::vector<int> &v, int index) {
+  if (index <= 1) {
+    return;
+  }
+
+  insertHelper(v, index - 1);
+  int end = v[v.size() - 1];
+  int current_index = index - 2;
+
+  while (current_index >= 0 && v[current_index] > end) { 
+    v[current_index + 1] = v[current_index]; 
+    current_index--; 
+  }
+  v[current_index + 1] = end; 
+}
+
+void InsertionSort(std::vector<int> &v) {
+  insertHelper(v, v.size() - 1);
+}
