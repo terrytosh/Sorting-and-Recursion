@@ -66,8 +66,8 @@ void merge(std::vector<std::string> &vec, int l, int mid, int r) {
   }
 
   int r_size = r - mid;
-  std::string right_array[r_size] ;
-  for(int j = 0 ; j < r_size; j++) {
+  std::string right_array[r_size];
+  for(int j = 0; j < r_size; j++) {
     right_array[j] = vec[mid + 1 + r];
   }
 
@@ -78,12 +78,13 @@ void merge(std::vector<std::string> &vec, int l, int mid, int r) {
   while (li < l_size && ri < r_size) { 
     if (left_array[li].compare(right_array[ri]) > 0) { 
       vec[k] = left_array[li]; 
-      li++; 
+      li++;
+      k++; 
     } else { 
       vec[k] = right_array[ri]; 
       ri++; 
-    } 
-    k++; 
+      k++;
+    }  
   }
   while (li < l_size) { 
     vec[k] = left_array[li]; 
@@ -98,8 +99,9 @@ void merge(std::vector<std::string> &vec, int l, int mid, int r) {
 }
 
 void mergeHelper(std::vector<std::string> &vec, int l, int r) {
+  int mid; 
   if (l < r) {
-    int mid = l + (r - l) / 2;
+    mid = l + (r - l) / 2;
     mergeHelper(vec, l, mid);
     mergeHelper(vec, mid + 1, r);
     merge(vec, l, mid, r);
