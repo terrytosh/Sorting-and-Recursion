@@ -31,8 +31,10 @@ void print(std::vector<int> &v) {
 }
 
 int main() {
+  
   //BubbleSort()
   //Test case 1
+  std::cout << "-----Testing BubbleSort()-----" << std::endl;
   std::vector<std::string> bubble_1;
   bubble_1 = {"ruth", "dora", "ziegellaub", "emma", "eichler"};
   std::cout << "Case 1: ";
@@ -57,6 +59,7 @@ int main() {
 
   //InsertionSort()
   //Test case 1
+  std::cout << "-----Testing InsertionSort()-----" << std::endl;
   std::vector<int> insert_1;
   insert_1 = {10, 9, 8, 7, 6, 5};
   std::cout << "Case 1: ";
@@ -80,8 +83,17 @@ int main() {
   print(insert_3);
   std::cout << "Expected: [-5, -5, -4, 0, 0, 10, 100]" << std::endl;
 
+  //Test case 4
+  std::vector<int> insert_4;
+  insert_4 = {};
+  std::cout << "Case 4: ";
+  InsertionSort(insert_4);
+  print(insert_4);
+  std::cout << "Expected: []" << std::endl;
+
   //MargeSort()
   //Test case 1
+  std::cout << "-----Testing MergeSort()-----" << std::endl;
   std::vector<std::string> merge_1;
   merge_1 = {"ruth", "dora", "ziegellaub", "emma", "eichler"};
   std::cout << "Case 1: ";
@@ -89,10 +101,27 @@ int main() {
   print(merge_1);
   std::cout << "Expected: [dora, eichler, emma, ruth, ziegellaub]" << std::endl;
 
+  //Test case 2
   std::vector<std::string> merge_2;
-  merge_2 = {"rd", "rc", "rz", "ra", "re"};
+  merge_2 = {"rz", "ry", "rx", "rw", "ra"};
   std::cout << "Case 2: ";
   MergeSort(merge_2);
   print(merge_2);
-  std::cout << "Expected: [dora, eichler, emma, ruth, ziegellaub]" << std::endl;
+  std::cout << "Expected: [ra, rw, rx, ry, rz]" << std::endl;
+
+  //Test case 3
+  std::vector<std::string> merge_3;
+  merge_3 = {"terry"};
+  std::cout << "Case 3: ";
+  MergeSort(merge_3);
+  print(merge_3);
+  std::cout << "Expected: [terry]" << std::endl;
+
+  //Test case 4
+  std::vector<std::string> merge_4;
+  merge_4 = {};
+  std::cout << "Case 3: ";
+  MergeSort(merge_4);
+  print(merge_4);
+  std::cout << "Expected: []" << std::endl;
 }

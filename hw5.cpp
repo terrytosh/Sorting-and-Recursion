@@ -10,9 +10,22 @@ proceeding element, swap them and set swapped = true. Keep doing this process fo
 until no elements are swapped or until i reaches size - 1.
 
 InsertionSort():
+Base case - once index <= 1 return.
+Recrusively call insertHelper(vec, index - 1) to 
+sort index - 1 elements. Store last element in end = vec[index - 1]
+and the current_index as index - 2. Move elements position in
+vector up by one, if they are greater than end. Set vec[current_index + 1] = end;
 
 MergeSort():
-
+Base case - if left index >= right index return.
+Recuresively call mergeHelper(vec, l, mid) to break the left
+side down into single vectors to be built back up. And recursively call mergeHelper(vec, mid + 1, r) to do the same to the right side of the vector. Then once all the mergeHelper calls have finished, call merge(vec, l, mid, r) to sort the subarrays into alphabetical order. 
+Dynamically allocate a new array of strings for temp use.
+Initialiaze i to be the left index, mid+1 to be the right index,
+k to be the temp array index. While i index hasn't reached the middle
+&& the left index hasn't reach the end, compare the elements at
+the current positions of the subarrays. If vec[i] comes before vec[j],
+add vec[i] to the temp array and incement both i and k; Else, add vec[j] to the temp array and increment k and j. After, run two while loops to put the rest of the elements in the left side of the vector and the right side into the temp array. Finally, put the elements of temp into the vector to sort it. Delete temp [].
 */
 #include <vector>
 #include <string>
@@ -60,25 +73,30 @@ void InsertionSort(std::vector<int> &v) {
 
 void merge(std::vector<std::string> &vec, int l, int mid, int r) {
   std::string *temp = new std::string[r - l + 1];
-  int i = l, j = mid + 1; //i is for left-hand,j is for right-hand
-  int k = 0; //k is for the temporary array
-  while(i <= mid && j <= r){
-    if(vec[i].compare(vec[j]) <= 0)
-        temp[k++] = vec[i++];
-    else
-        temp[k++] = vec[j++];
+  int i = l;
+  int j = mid + 1;
+  int k = 0;
+
+  while (i <= mid && j <= r) {
+    if (vec[i].compare(vec[j]) <= 0) {
+      temp[k++] = vec[i++];
+    } else {
+      temp[k++] = vec[j++];
     }
-    //rest elements of left-half
-    while(i <= mid)
-        temp[k++] = vec[i++];
-    //rest elements of right-half
-    while(j <= r)
-        temp[k++] = vec[j++];
-    //copy the mergered temporary array to the original array
-    for(k = 0, i = l; i <= r; ++i, ++k)
-        vec[i] = temp[k];
- 
-    delete []temp; 
+  }
+
+    while (i <= mid) {
+      temp[k++] = vec[i++];
+    }
+    while (j <= r) {
+      temp[k++] = vec[j++];
+    }
+
+    for(k = 0, i = l; i <= r; ++i, ++k){
+      vec[i] = temp[k];
+    }
+
+  delete []temp; 
 }
 
 void mergeHelper(std::vector<std::string> &vec, int l, int r) {
